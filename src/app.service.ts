@@ -31,4 +31,12 @@ export class AppService {
     return rows as Jatek[]
   }
 
+  async getMacskaSearch(search: string){
+    const [results] = await mysqlConnection.execute(
+      `SELECT id, suly, szem_szin AS szemSzin, gazdi_id AS gazdiId, jatek_id AS jatekId FROM macskak where szem_szin LIKE ?`, [`%${search}%`]
+    );
+    const rows = results as any;
+    return rows as Macska[];
+  }
+
 }
