@@ -11,6 +11,7 @@ const mysqlConnection = mysql.createPool({
 
 @Injectable()
 export class AppService {
+  ujJatek: any;
   getHello(): string {
     return 'Hello World!';
   }

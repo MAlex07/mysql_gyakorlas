@@ -1,5 +1,6 @@
-import { Controller, Get, Query, Render } from '@nestjs/common';
+import { Controller, Get, Query, Render, Post, Body } from '@nestjs/common';
 import { AppService } from './app.service.js';
+import { UjJatekDto } from './ujjatekdto.dto.js';
 
 
 
@@ -37,5 +38,16 @@ export class AppController {
     return{
       macskak: await this.appService.getMacskaSearch(search)
     }
+  }
+
+  @Get("ujjatek")
+  @Render("ujjatekform")
+  async ujJatekForm() {
+
+  }
+
+  @Post("ujjatek")
+  async ujJatek(@Body() body: UjJatekDto) {
+    await this.appService.ujJatek(body.nev);
   }
 }
